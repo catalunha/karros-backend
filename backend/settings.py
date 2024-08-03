@@ -103,9 +103,9 @@ if DEV_MODE is True:
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
-    # DATABASES = {"default": parse(config("DATABASE_URL_DEV"))}
+    # DATABASES = {"default": parse(config("DATABASE_DEV"))}
 else:
-    DATABASES = {"default": parse(config("DATABASE_URL"))}
+    DATABASES = {"default": parse(config("DATABASE_PROD"))}
 
 
 # Password validation
