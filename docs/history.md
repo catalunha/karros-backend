@@ -48,3 +48,18 @@ python manage.py createsuperuser
 admin@gmail.com
 django@123
 
+# acessar db no docean
+Localmente
+(karros-backend-py3.12) catalunha@pop-os:~/apps/karros-backend/backend$ psql postgresql://doadmin:AVNS_hC3sRyHIfULxX7NdbIp@db-fluxus-do-user-7515641-0.c.db.ondigitalocean.com:25060/karrosdb?sslmode=require
+psql (15.7 (Ubuntu 15.7-1.pgdg22.04+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
+Type "help" for help.
+
+karrosdb=> 
+
+
+REVOKE ALL ON DATABASE karrosdb FROM karrosuser;
+GRANT ALL ON DATABASE karrosdb TO karrosuser;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO karrosuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO karrosuser;
+ALTER DATABASE karrosdb OWNER TO karrosuser;
