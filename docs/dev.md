@@ -87,3 +87,5 @@ psql -h localhost -U fluxususer -d fluxusdb < fluxusdb_prod.txt
 
 # SWAGGER
 http://192.168.10.117:8000/api/schema/?format=json
+
+# se update requirements
