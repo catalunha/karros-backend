@@ -1,5 +1,6 @@
-from factories.models import Model
 from rest_framework.generics import ListAPIView
+
+from backend.factories.models import Model
 
 from ..serializers import ModelSerializerResponse
 

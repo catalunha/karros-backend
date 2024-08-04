@@ -1,1 +1,1 @@
-from .vehicle import Vehicle
+from backend.stores.models.vehicle import Vehicle

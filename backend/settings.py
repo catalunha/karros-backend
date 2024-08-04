@@ -42,6 +42,10 @@ CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    "backend.core.apps.CoreConfig",
+    "backend.users.apps.UsersConfig",
+    "backend.factories.apps.FactoriesConfig",
+    "backend.stores.apps.StoresConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -51,11 +55,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "drf_spectacular",
-    "core",
-    "users",
-    "factories",
-    "stores",
 ]
+ROOT_URLCONF = "backend.urls"
+WSGI_APPLICATION = "backend.wsgi.application"
+AUTH_USER_MODEL = "users.User"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -68,7 +71,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "urls"
 
 TEMPLATES = [
     {
@@ -85,8 +87,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = "wsgi.application"
 
 
 # Database
@@ -170,7 +170,6 @@ else:
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "users.User"
 
 if DEV_MODE is True:
     STORAGES = {

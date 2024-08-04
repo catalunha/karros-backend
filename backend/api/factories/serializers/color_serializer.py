@@ -1,5 +1,6 @@
-from factories.models import Color
 from rest_framework import serializers
+
+from backend.factories.models import Color
 
 
 class ColorSerializerResponse(serializers.ModelSerializer):

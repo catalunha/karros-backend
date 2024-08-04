@@ -1,7 +1,8 @@
-from core.models import BaseModel
 from django.db import models
-from factories.models import Color, Model
-from users.models import User
+
+from backend.core.models import BaseModel
+from backend.factories.models import Color, Model
+from backend.users.models import User
 
 
 def image_upload_to(instance, filename):

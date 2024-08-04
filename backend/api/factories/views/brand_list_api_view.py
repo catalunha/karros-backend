@@ -1,5 +1,6 @@
-from factories.models import Brand
 from rest_framework.generics import ListAPIView
+
+from backend.factories.models import Brand
 
 from ..serializers import BrandSerializerResponse
 

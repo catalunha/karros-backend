@@ -1,5 +1,6 @@
-from factories.models import Brand
 from rest_framework import serializers
+
+from backend.factories.models import Brand
 
 
 class BrandSerializerResponse(serializers.ModelSerializer):

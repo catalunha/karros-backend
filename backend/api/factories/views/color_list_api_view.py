@@ -1,5 +1,6 @@
-from factories.models import Color
 from rest_framework.generics import ListAPIView
+
+from backend.factories.models import Color
 
 from ..serializers import ColorSerializerResponse
 
