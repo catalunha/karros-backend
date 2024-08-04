@@ -29,11 +29,18 @@ python manage.py makemigrations; python manage.py migrate
 ## Super User
 admin@gmail.com
 django@123
+{
+  "email": "admin@gmail.com",
+  "password": "django@123"
+}
 
 ## user 1
 catalunha.mj@gmail.com
 cat@1234
-
+{
+  "email": "catalunha.mj@gmail.com",
+  "password": "cat@1234"
+}
 # Comandos após finalizar o tempo de dev diario
 
 ## Listar os servicos ativos

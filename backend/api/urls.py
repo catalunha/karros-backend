@@ -14,8 +14,20 @@ urlpatterns = [
     ),
 ]
 urlpatterns += [
-    path("me/", include("backend.api.me.urls")),
+    path(
+        "me/",
+        include("backend.api.me.urls"),
+    ),
 ]
 urlpatterns += [
-    path("factories/", include("backend.api.factories.urls")),
+    path(
+        "factories/",
+        include("backend.api.factories.urls"),
+    ),
+]
+urlpatterns += [
+    path(
+        "stores/",
+        include("backend.api.stores.urls"),
+    ),
 ]

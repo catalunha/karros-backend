@@ -29,6 +29,8 @@ class Vehicle(BaseModel):
     )
     image = models.ImageField(
         upload_to=image_upload_to,
+        null=True,
+        blank=True,
     )
     value = models.DecimalField(
         max_digits=11,
