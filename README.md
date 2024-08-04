@@ -1,14 +1,34 @@
 # karros-backend
 
+# core
+
+
+## users
 
 user
   nome
   phone
+
+## factory
+
 marca
 modelo
-imagem
 cor
-valor
-ano
-descricao
-proprietario
+
+## stores
+vehicle
+  modelo
+  cor
+  imagem
+  valor
+  ano
+  descricao
+  proprietario
+
+
+
+List
+
+Create
+Update
+Delete

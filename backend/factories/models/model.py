@@ -11,3 +11,6 @@ class Model(BaseModel):
         on_delete=models.CASCADE,
         related_name="models",
     )
+
+    def __str__(self) -> str:
+        return f"{self.name}-{self.brand}"
