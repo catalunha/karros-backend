@@ -183,13 +183,13 @@ if DEV_MODE is True:
 else:
     STORAGES = {
         "default": {
-            "BACKEND": "core.storages.MediaStorage",
+            "BACKEND": "backend.core.storages.MediaStorage",
             "OPTIONS": {
                 "location": "karros-mediafiles",
             },
         },
         "staticfiles": {
-            "BACKEND": "core.storages.StaticStorage",
+            "BACKEND": "backend.core.storages.StaticStorage",
             "OPTIONS": {
                 "location": "karros-staticfiles",
             },
