@@ -73,9 +73,11 @@ class VehicleAdmin(admin.ModelAdmin):
         try:
             print("obj.user", obj.user)
         except ObjectDoesNotExist:
+            print("obj.user not exist")
             obj.user = request.user
 
-        obj.save()
+        # obj.save()
+        super().save_model(request, obj, form, change)
 
     # def has_change_permission(self, request, obj=None):
     #     if not obj:

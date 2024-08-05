@@ -34,13 +34,21 @@ django@123
   "password": "django@123"
 }
 
-## user 1
+## users
 catalunha.mj@gmail.com
 cat@1234
 {
   "email": "catalunha.mj@gmail.com",
   "password": "cat@1234"
 }
+
+renatomitt.ti@gmail.com
+mitt@1234
+{
+  "email": "renatomitt.ti@gmail.com",
+  "password": "mitt@1234"
+}
+
 # Comandos após finalizar o tempo de dev diario
 
 ## Listar os servicos ativos
