@@ -1,21 +1,65 @@
 from django.contrib import admin
+from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Vehicle
 
 
 @admin.register(Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
-    list_display = [
-        "id",
-        "user",
-        "model",
-        "color",
-        "image",
-        "value",
-        "year",
+    list_filter = [
         "is_sold",
     ]
-    exclude = ["user"]
+    # list_display = [
+    #     "id",
+    #     "user",
+    #     "model",
+    #     "color",
+    #     "image",
+    #     "value",
+    #     "year",
+    #     "is_sold",
+    # ]
+    # exclude = ["user"]
+
+    def add_view(self, request, extra_context=None):
+        if not request.user.is_superuser:
+            self.exclude = ["user"]
+        else:
+            self.exclude = []
+        return super(VehicleAdmin, self).add_view(request, extra_context)
+
+    def change_view(self, request, object_id, extra_context=None):
+        if not request.user.is_superuser:
+            self.exclude = ["user"]
+        else:
+            self.exclude = []
+        return super(VehicleAdmin, self).change_view(request, object_id, extra_context)
+
+    def changelist_view(self, request, extra_context=None):
+        print("VehicleAdmin.changelist_view")
+        print("user", request.user)
+        if request.user.is_superuser:
+            self.list_display = [
+                "id",
+                "user",
+                "model",
+                "color",
+                "image",
+                "value",
+                "year",
+                "is_sold",
+            ]
+        else:
+            self.list_display = [
+                "model",
+                "color",
+                "image",
+                "value",
+                "year",
+                "is_sold",
+            ]
+
+        return super(VehicleAdmin, self).changelist_view(request, extra_context)
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
@@ -25,7 +69,12 @@ class VehicleAdmin(admin.ModelAdmin):
             return qs.filter(user=request.user)
 
     def save_model(self, request, obj, form, change):
-        obj.user = request.user
+        print("VehicleAdmin.save_model")
+        try:
+            print("obj.user", obj.user)
+        except ObjectDoesNotExist:
+            obj.user = request.user
+
         obj.save()
 
     # def has_change_permission(self, request, obj=None):
