@@ -1,14 +1,21 @@
 from django.contrib import admin
-from django.core.exceptions import ObjectDoesNotExist
+from django.utils.html import format_html
 
 from .models import Vehicle
 
 
+def make_is_sold(modeladmin, request, queryset):
+    queryset.update(is_sold=True)
+
+
 @admin.register(Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
+    make_is_sold.short_description = "Mark isSold item"
+    actions = [make_is_sold]
     list_filter = [
         "is_sold",
     ]
+
     # list_display = [
     #     "id",
     #     "user",
@@ -20,6 +27,16 @@ class VehicleAdmin(admin.ModelAdmin):
     #     "is_sold",
     # ]
     # exclude = ["user"]
+    def image_view(self, obj):
+        if not obj.image:
+            return format_html("")
+        return format_html(
+            '<img src="{}" style="max-width:200px; max-height:200px"/>'.format(
+                obj.image.url
+            )
+        )
+
+    image_view.short_description = "View image"
 
     def add_view(self, request, extra_context=None):
         if not request.user.is_superuser:
@@ -44,19 +61,19 @@ class VehicleAdmin(admin.ModelAdmin):
                 "user",
                 "model",
                 "color",
-                "image",
                 "value",
                 "year",
                 "is_sold",
+                "image_view",
             ]
         else:
             self.list_display = [
                 "model",
                 "color",
-                "image",
                 "value",
                 "year",
                 "is_sold",
+                "image_view",
             ]
 
         return super(VehicleAdmin, self).changelist_view(request, extra_context)
@@ -69,13 +86,8 @@ class VehicleAdmin(admin.ModelAdmin):
             return qs.filter(user=request.user)
 
     def save_model(self, request, obj, form, change):
-        print("VehicleAdmin.save_model")
-        try:
-            print("obj.user", obj.user)
-        except ObjectDoesNotExist:
-            print("obj.user not exist")
+        if not request.user.is_superuser:
             obj.user = request.user
-
         # obj.save()
         super().save_model(request, obj, form, change)
 
