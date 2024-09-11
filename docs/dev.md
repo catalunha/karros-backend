@@ -3,7 +3,7 @@
 
 ## iniciar poetry
 Se não entrar automaticamente no env
-catalunha@pop-os:~/apps/proclinicakids.com.br/fluxus5api$ 
+catalunha@pop-os:~/apps/proclinicakids.com.br/fluxus5api$
 poetry shell
 
 ## restartar os servicos do docker compose
@@ -16,7 +16,7 @@ python manage.py runserver 192.168.10.117:8000
 192.168.10.117:8000
 
 ## acessar admin ou recriar senha
-(fluxus5api-py3.11) catalunha@pop-os:~/apps/proclinicakids.com.br/fluxus5api$ 
+(fluxus5api-py3.11) catalunha@pop-os:~/apps/proclinicakids.com.br/fluxus5api$
 python manage.py changepassword admin@gmail.com
 
 senha atual da conta admin@gmail.com é: django@123
@@ -76,7 +76,7 @@ Password: <acessar site do digitalOcean e pegar senha para este db e user>
 ### Se o data for novo
 Após criado pelo volume do container
 (fluxus5api-py3.11) catalunha@pop-os:~/myapp/proclinicakids/fluxus5api/z/docker-fluxus5$
-psql -h localhost -U fluxususer -d fluxusdb < fluxusdb_prod.txt 
+psql -h localhost -U fluxususer -d fluxusdb < fluxusdb_prod.txt
 Password for user fluxususer: <informe password do database local>
 
 ### se o database ja tiver dados
@@ -91,7 +91,7 @@ postgres=# drop database fluxusdb;
 postgres=# create database fluxusdb with owner fluxususer;
 
 Sair e restaurar os dados
-psql -h localhost -U fluxususer -d fluxusdb < fluxusdb_prod.txt 
+psql -h localhost -U fluxususer -d fluxusdb < fluxusdb_prod.txt
 
 # SWAGGER
 http://192.168.10.117:8000/api/schema/?format=json

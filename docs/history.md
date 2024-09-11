@@ -36,7 +36,7 @@ poetry add django-storages[s3]
 poetry add boto3
 poetry add django-filter
 poetry add drf-spectacular
-
+poetry add django-imagekit
 
 django-admin startproject backend .
 cd backend
@@ -57,7 +57,7 @@ psql (15.7 (Ubuntu 15.7-1.pgdg22.04+1))
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
 Type "help" for help.
 
-karrosdb=> 
+karrosdb=>
 
 
 REVOKE ALL ON DATABASE karrosdb FROM karrosuser;
@@ -87,3 +87,8 @@ python manage.py createsuperuser
   "description": "desc1",
   "owner": "prop1"
 }
+
+# resize img
+
+https://medium.com/django-unleashed/mastering-image-processing-in-django-with-django-imagekit-a-comprehensive-guide-5af5c23fdab0
+https://medium.com/django-unleashed/transform-your-django-images-with-django-imagekit-5e14df09869a
